@@ -1,0 +1,21 @@
+[general]
+name=Style Manager
+qgisMinimumVersion=4.0
+description=Export and import styles for QGIS layers
+version=0.2
+author=Your Name
+email=your.email@example.com
+
+about=This plugin allows you to export styles for multiple selected layers and import styles for the active layer with just a few clicks.
+
+tracker=http://bugs.example.com/your_plugin
+repository=http://repo.example.com/your_plugin
+homepage=http://www.example.com/your_plugin
+
+tags=style,export,import,layers
+
+category=Vector
+icon=icon.png
+
+experimental=True
+deprecated=False
