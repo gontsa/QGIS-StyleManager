@@ -4,7 +4,7 @@ qgisMinimumVersion=4.0
 description=Export and import styles for QGIS layers
 version=0.2
 author=gontsa
-email=
+email=fedir.gontsa@gmail.com
 
 about=This plugin allows you to export styles for multiple selected layers and import styles for the active layer with just a few clicks.
 
