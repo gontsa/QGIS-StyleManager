@@ -1,0 +1,5 @@
+*.pyc
+__pycache__/
+*.qm
+.qgis2/
+*.zip
