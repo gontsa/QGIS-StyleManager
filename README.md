@@ -48,7 +48,7 @@ ln -s ~/path/to/QGIS-StyleManager \
 ### Export styles
 
 1. Select one or more layers in the Layers panel
-2. Click **Style Manager → Export Styles** or use the shortcut (`Ctrl+Shift+E` by default)
+2. Click **Style Manager → Export Styles** or use the shortcut (`Ctrl+Shift+X` by default)
 3. If a default styles directory is set — styles are saved automatically to `styles_dir/ProjectName/`
 4. Otherwise a folder selection dialog appears
 
@@ -66,7 +66,7 @@ ln -s ~/path/to/QGIS-StyleManager \
 
 | Setting | Description |
 |---|---|
-| Export shortcut | Keyboard shortcut for export (default `Ctrl+Shift+E`) |
+| Export shortcut | Keyboard shortcut for export (default `Ctrl+Shift+X`) |
 | Import shortcut | Keyboard shortcut for import (default `Ctrl+Shift+I`) |
 | Default styles directory | Root folder for project-based style storage |
 
@@ -120,6 +120,20 @@ To update translation sources after editing strings in the code:
 pylupdate6 style_manager.py -ts i18n/i18n_uk.ts
 /usr/lib/qt6/bin/lrelease i18n/i18n_uk.ts -qm i18n/i18n_uk.qm
 ```
+
+## Changelog
+
+### v0.3
+- Changed default export shortcut from `Ctrl+Shift+E` to `Ctrl+Shift+X`
+  (`Ctrl+Shift+E` conflicts with IBus on Linux and causes a Qt6 crash)
+- Added separate icons for export, import, and settings (Material Icons)
+
+### v0.2
+- Initial public release
+- QGIS 4.0 / Qt6 compatibility fixes
+- Configurable keyboard shortcuts via Settings dialog
+- Project-based styles directory organization
+- i18n support (EN + UK)
 
 ## Credits
 

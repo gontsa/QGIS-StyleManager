@@ -6,7 +6,7 @@ from qgis.PyQt.QtCore import QCoreApplication, QSettings, Qt
 from qgis.core import QgsVectorLayer, QgsRasterLayer, QgsProject, Qgis
 import os
 
-DEFAULT_SHORTCUT_EXPORT = 'Ctrl+Shift+E'
+DEFAULT_SHORTCUT_EXPORT = 'Ctrl+Shift+X'
 DEFAULT_SHORTCUT_IMPORT = 'Ctrl+Shift+I'
 
 
