@@ -20,7 +20,7 @@ A QGIS 4.0+ plugin for exporting and importing layer styles (QML files) with pro
 
 ### From ZIP
 
-1. Download the latest release ZIP from [Releases](https://github.com/gontsa/QGIS-Style-Manager/releases)
+1. Download the latest release ZIP from [Releases](https://github.com/gontsa/QGIS-StyleManager/releases)
 2. In QGIS: **Plugins → Manage and Install Plugins → Install from ZIP**
 3. Select the downloaded ZIP and click **Install Plugin**
 
