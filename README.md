@@ -8,7 +8,7 @@ A QGIS 4.0+ plugin for exporting and importing layer styles (QML files) with pro
 - **Import style** for the active layer
 - **Project-based storage** — styles are automatically saved to `styles_dir/ProjectName/`
 - **Configurable keyboard shortcuts** via Settings dialog (persisted between sessions)
-- **Default styles directory** — set once, no more folder dialogs
+- **Default styles directory** — set once, no more folder dialogs every time
 - **i18n support** — English by default, Ukrainian translation included
 
 ## Requirements
@@ -36,6 +36,13 @@ xcopy StyleManager %APPDATA%\QGIS\QGIS4\profiles\default\python\plugins\StyleMan
 
 Then enable the plugin in **Plugins → Manage and Install Plugins**.
 
+### For development (symlink)
+
+```bash
+ln -s ~/path/to/QGIS-StyleManager \
+  ~/.local/share/QGIS/QGIS4/profiles/default/python/plugins/QGIS-StyleManager
+```
+
 ## Usage
 
 ### Export styles
@@ -44,6 +51,8 @@ Then enable the plugin in **Plugins → Manage and Install Plugins**.
 2. Click **Style Manager → Export Styles** or use the shortcut (`Ctrl+Shift+E` by default)
 3. If a default styles directory is set — styles are saved automatically to `styles_dir/ProjectName/`
 4. Otherwise a folder selection dialog appears
+
+> **Note:** the project must be saved before exporting, as the project name is used for the subfolder.
 
 ### Import style
 
@@ -74,7 +83,21 @@ styles_dir/
     └── roads_line_style.qml
 ```
 
-> **Note:** the project must be saved before exporting, as the project name is used for the subfolder.
+## File structure
+
+```
+QGIS-StyleManager/
+├── __init__.py
+├── style_manager.py
+├── metadata.txt
+├── icons/
+│   ├── icon_export.svg    # Material Icons — upload_file
+│   ├── icon_import.svg    # Material Icons — file_download
+│   └── icon_settings.svg  # Material Icons — settings
+└── i18n/
+    ├── i18n_uk.ts
+    └── i18n_uk.qm
+```
 
 ## Translations
 
@@ -91,20 +114,16 @@ The plugin auto-detects the system locale and loads the matching `.qm` file.
 
 ## Development
 
-```bash
-git clone https://github.com/gontsa/QGIS-Style-Manager.git
-cd QGIS-Style-Manager
-
-# Symlink into QGIS plugins folder for live development
-ln -s $(pwd)/StyleManager ~/.local/share/QGIS/QGIS4/profiles/default/python/plugins/StyleManager
-```
-
 To update translation sources after editing strings in the code:
 
 ```bash
 pylupdate6 style_manager.py -ts i18n/i18n_uk.ts
 /usr/lib/qt6/bin/lrelease i18n/i18n_uk.ts -qm i18n/i18n_uk.qm
 ```
+
+## Credits
+
+Icons: [Material Icons](https://fonts.google.com/icons) by Google — [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## License
 

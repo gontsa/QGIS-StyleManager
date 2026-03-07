@@ -127,23 +127,23 @@ class StyleExporterImporterPlugin:
         return action
 
     def initGui(self):
-        icon_path = os.path.join(os.path.dirname(__file__), 'icon.png')
+        plugin_dir = os.path.dirname(__file__)
         export_sc, import_sc, _ = self._load_settings()
 
         self.action_export = self.add_action(
-            icon_path,
+            os.path.join(plugin_dir, 'icons', 'icon_export.svg'),
             text=self._menu_text(self.tr('Export Styles'), export_sc),
             callback=self.run_export)
         self._apply_shortcut(self.action_export, export_sc)
 
         self.action_import = self.add_action(
-            icon_path,
+            os.path.join(plugin_dir, 'icons', 'icon_import.svg'),
             text=self._menu_text(self.tr('Import Style'), import_sc),
             callback=self.run_import)
         self._apply_shortcut(self.action_import, import_sc)
 
         self.add_action(
-            icon_path,
+            os.path.join(plugin_dir, 'icons', 'icon_settings.svg'),
             text=self.tr('Settings…'),
             callback=self.open_settings,
             add_to_toolbar=False)
