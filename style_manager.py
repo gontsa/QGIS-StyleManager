@@ -251,7 +251,7 @@ class StyleExporterImporterPlugin:
         if not file_path:
             return
 
-        success, error_msg = active_layer.loadNamedStyle(file_path)
+        error_msg, success = active_layer.loadNamedStyle(file_path)
 
         if success:
             self.iface.messageBar().pushMessage(
