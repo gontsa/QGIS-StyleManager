@@ -2,7 +2,7 @@
 name=Style Manager
 qgisMinimumVersion=4.0
 description=Export and import styles for QGIS layers
-version=0.4
+version=0.4.1
 author=gontsa
 email=
 
