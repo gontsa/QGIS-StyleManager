@@ -123,6 +123,13 @@ pylupdate6 style_manager.py -ts i18n/i18n_uk.ts
 
 ## Changelog
 
+### v0.4
+- **#1** Replaced `QSettings` with `QgsSettings` — profile-aware storage, explicit `type=str` for Qt6 safety
+- **#2** Wrapped all file I/O in `try/except` — friendly error messages on `PermissionError` / `OSError`
+- **#3** Sanitized layer names in export filenames — removes characters illegal on Windows/Linux
+- **#4** Replaced custom shortcut handling with `registerMainWindowAction()` — shortcuts now visible in Settings → Keyboard Shortcuts; removed redundant `QKeySequenceEdit` from Settings dialog
+- **#5** Geometry type mismatch warning on import — detects polygon/line/point/raster conflicts from filename and asks for confirmation
+
 ### v0.3
 - Changed default export shortcut from `Ctrl+Shift+E` to `Ctrl+Shift+X`
   (`Ctrl+Shift+E` conflicts with IBus on Linux and causes a Qt6 crash)
