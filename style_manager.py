@@ -1,8 +1,8 @@
 from qgis.PyQt.QtWidgets import (QAction, QFileDialog, QDialog, QFormLayout, QVBoxLayout,
                                   QHBoxLayout, QDialogButtonBox, QLabel, QPushButton,
                                   QLineEdit, QGroupBox, QMessageBox)
-from qgis.PyQt.QtGui import QIcon, QKeySequence
-from qgis.PyQt.QtCore import QCoreApplication, Qt
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtCore import QCoreApplication
 from qgis.core import QgsVectorLayer, QgsRasterLayer, QgsProject, QgsSettings, Qgis
 import os
 
@@ -101,7 +101,6 @@ class StyleExporterImporterPlugin:
     def initGui(self):
         plugin_dir = os.path.dirname(__file__)
 
-        # #4: registerMainWindowAction — shortcuts appear in Settings → Keyboard Shortcuts
         self.action_export = self.add_action(
             os.path.join(plugin_dir, 'icons', 'icon_export.svg'),
             text=self.tr('Export Styles'),
@@ -121,8 +120,8 @@ class StyleExporterImporterPlugin:
             add_to_toolbar=False)
 
     def unload(self):
-        self.iface.unregisterMainWindowAction(self.action_export)  # #4
-        self.iface.unregisterMainWindowAction(self.action_import)  # #4
+        self.iface.unregisterMainWindowAction(self.action_export)
+        self.iface.unregisterMainWindowAction(self.action_import)
         for action in self.actions:
             self.iface.removePluginMenu(self.menu, action)
             self.iface.removeToolBarIcon(action)
@@ -153,13 +152,14 @@ class StyleExporterImporterPlugin:
 
     def _get_output_dir(self, styles_dir):
         if styles_dir:
-            project_name = self._get_project_name()
-            if not project_name:
+            raw_name = QgsProject.instance().baseName()
+            if not raw_name:  # check raw name before sanitization — empty means unsaved
                 self.iface.messageBar().pushMessage(
                     self.tr('Warning'),
                     self.tr('Project is not saved. Please save the project first.'),
                     level=Qgis.Warning, duration=5)
                 return None
+            project_name = self._sanitize_filename(raw_name)
             output_dir = os.path.join(styles_dir, project_name)
             os.makedirs(output_dir, exist_ok=True)  # guarded by try/except in run_export
             return output_dir
